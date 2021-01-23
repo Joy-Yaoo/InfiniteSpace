@@ -96,23 +96,20 @@ void green(){
   
   }
 void blue(){
-
-
-     if (loading) {
+  if (loading) {
     FastLED.clear();
     loading = false;
   }
+  
    for(int bank1 = 0; bank1 < NUM_LEDS; bank1 = bank1 + 1) {
       // Turn our current led on to white, then show the leds
 
- if (bank1 - offset <= -1)
- { bank2 = NUM_LEDS + bank1 - offset ;}
+     if (bank1 - offset <= -1){ bank2 = NUM_LEDS + bank1 - offset ;}
 
- else
- { bank2 = bank1 - offset ;}
+     else { bank2 = bank1 - offset ;}
  
-      leds[bank1] = CRGB::LightSkyBlue; //colour of bank1
-      leds[bank2] = CRGB::LightSkyBlue; //colour of bank 2
+     leds[bank1] = CRGB::LightSkyBlue; //colour of bank1
+     leds[bank2] = CRGB::LightSkyBlue; //colour of bank 2
 
       // Show the leds 
       FastLED.show();
@@ -121,76 +118,72 @@ void blue(){
       delay(10);
 
       // Turn our current led back to black for the next loop around
-    if (bank1 < bank_1_size) 
-    { c = (bank1 + NUM_LEDS - bank_1_size );} 
-    else 
-    { c = (bank1 - bank_1_size );}
-      leds[c] = CRGB::LightSkyBlue; //colour between bank1 & bank2
-      //Color:LightSkyBlue;Indigo;Goldenrod;AntiqueWhite;
-      
- if (bank2 < bank_2_size ) 
-    { d = (bank2 + NUM_LEDS - bank_2_size );} 
-    else 
-    { d = (bank2 - bank_2_size   );}
-      leds[d] = CRGB::Black; //colour between bank2 and bank 1
-       
-   }
-}
+      if (bank1 < bank_1_size) 
+      { c = (bank1 + NUM_LEDS - bank_1_size );} 
+      else 
+      { c = (bank1 - bank_1_size );}
+        leds[c] = CRGB::LightSkyBlue; //colour between bank1 & bank2
+
+     if (bank2 < bank_2_size ) 
+        { d = (bank2 + NUM_LEDS - bank_2_size );} 
+      else 
+      { d = (bank2 - bank_2_size   );}
+        leds[d] = CRGB::Black; //colour between bank2 and bank 1
+     }
+    }
 
    
 void white(){
-
-     if (loading) {
+    if (loading) {
     FastLED.clear();
     loading = false;
   }
    for(int bank1 = 0; bank1 < NUM_LEDS; bank1 = bank1 + 1) {
       // Turn our current led on to white, then show the leds
 
- if (bank1 - offset <= -1)
- { bank2 = NUM_LEDS + bank1 - offset ;}
+     if (bank1 - offset <= -1)
+     { bank2 = NUM_LEDS + bank1 - offset ;}
 
- else
- { bank2 = bank1 - offset ;}
+     else
+     { bank2 = bank1 - offset ;}
  
       leds[bank1] = CRGB::White; //colour of bank1
       leds[bank2] = CRGB::White; //colour of bank 2
 
       // Show the leds 
       FastLED.show();
-
-      // Wait a little bit
+     
       delay(10);
 
       // Turn our current led back to black for the next loop around
-    if (bank1 < bank_1_size) 
-    { c = (bank1 + NUM_LEDS - bank_1_size );} 
-    else 
-    { c = (bank1 - bank_1_size );}
-      leds[c] = CRGB::White; //colour between bank1 & bank2
-      //Color:LightSkyBlue;Indigo;Goldenrod;AntiqueWhite;
+      if (bank1 < bank_1_size) 
+      { c = (bank1 + NUM_LEDS - bank_1_size );} 
+      else 
+      { c = (bank1 - bank_1_size );}
+        leds[c] = CRGB::White; //colour between bank1 & bank2
+        //Color:LightSkyBlue;Indigo;Goldenrod;AntiqueWhite;
       
- if (bank2 < bank_2_size ) 
-    { d = (bank2 + NUM_LEDS - bank_2_size );} 
-    else 
-    { d = (bank2 - bank_2_size   );}
-      leds[d] = CRGB::Black; //colour between bank2 and bank 1
-       
+     if (bank2 < bank_2_size ) 
+        { d = (bank2 + NUM_LEDS - bank_2_size );} 
+        else 
+        { d = (bank2 - bank_2_size   );}
+          leds[d] = CRGB::Black; //colour between bank2 and bank 1 
+     }
    }
-}
+
 void orange(){
-     if (loading) {
-    FastLED.clear();
-    loading = false;
-  }
+    if (loading) {
+      FastLED.clear();
+      loading = false;
+    }
    for(int bank1 = 0; bank1 < NUM_LEDS; bank1 = bank1 + 1) {
       // Turn our current led on to white, then show the leds
 
- if (bank1 - offset <= -1)
- { bank2 = NUM_LEDS + bank1 - offset ;}
+     if (bank1 - offset <= -1)
+     { bank2 = NUM_LEDS + bank1 - offset ;}
 
- else
- { bank2 = bank1 - offset ;}
+     else
+     { bank2 = bank1 - offset ;}
  
       leds[bank1] = CRGB::OrangeRed; //colour of bank1
       leds[bank2] = CRGB::OrangeRed; //colour of bank 2
@@ -198,71 +191,64 @@ void orange(){
       // Show the leds 
       FastLED.show();
 
-      // Wait a little bit
       delay(10);
 
       // Turn our current led back to black for the next loop around
-    if (bank1 < bank_1_size) 
-    { c = (bank1 + NUM_LEDS - bank_1_size );} 
-    else 
-    { c = (bank1 - bank_1_size );}
-      leds[c] = CRGB::OrangeRed; //colour between bank1 & bank2
-      //Color:LightSkyBlue;Indigo;Goldenrod;AntiqueWhite;
+      if (bank1 < bank_1_size) 
+      { c = (bank1 + NUM_LEDS - bank_1_size );} 
+      else 
+      { c = (bank1 - bank_1_size );}
+        leds[c] = CRGB::OrangeRed; //colour between bank1 & bank2
+        //Color:LightSkyBlue;Indigo;Goldenrod;AntiqueWhite;
       
- if (bank2 < bank_2_size ) 
-    { d = (bank2 + NUM_LEDS - bank_2_size );} 
-    else 
-    { d = (bank2 - bank_2_size   );}
-      leds[d] = CRGB::Black; //colour between bank2 and bank 1
-       
+      if (bank2 < bank_2_size ) 
+      { d = (bank2 + NUM_LEDS - bank_2_size );} 
+      else 
+      { d = (bank2 - bank_2_size   );}
+        leds[d] = CRGB::Black; //colour between bank2 and bank 1
    }
 }
+
 void blue2(){
     if (loading) {
-    FastLED.clear();
-    loading = false;
-  }
+      FastLED.clear();
+      loading = false;
+    }
    
    for(int bank1 = 0; bank1 < NUM_LEDS; bank1 = bank1 + 1) {
       // Turn our current led on to white, then show the leds
 
- if (bank1 - offset <= -1)
- { bank2 = NUM_LEDS + bank1 - offset ;}
+     if (bank1 - offset <= -1)
+     { bank2 = NUM_LEDS + bank1 - offset ;}
 
- else
- { bank2 = bank1 - offset ;}
- 
+     else
+     { bank2 = bank1 - offset ;}
       leds[bank1] = CRGB::MidnightBlue; //colour of bank1
       leds[bank2] = CRGB::MidnightBlue; //colour of bank 2
 
       // Show the leds 
       FastLED.show();
 
-      // Wait a little bit
       delay(10);
 
       // Turn our current led back to black for the next loop around
     if (bank1 < bank_1_size) 
-    { c = (bank1 + NUM_LEDS - bank_1_size );} 
-    else 
-    { c = (bank1 - bank_1_size );}
-      leds[c] = CRGB::MidnightBlue; //colour between bank1 & bank2
-      //Color:LightSkyBlue;Indigo;Goldenrod;AntiqueWhite;
+      { c = (bank1 + NUM_LEDS - bank_1_size );} 
+      else 
+      { c = (bank1 - bank_1_size );}
+        leds[c] = CRGB::MidnightBlue; 
       
- if (bank2 < bank_2_size ) 
-    { d = (bank2 + NUM_LEDS - bank_2_size );} 
-    else 
-    { d = (bank2 - bank_2_size   );}
-      leds[d] = CRGB::Black; //colour between bank2 and bank 1
-       
-   }  
+   if (bank2 < bank_2_size ) 
+      { d = (bank2 + NUM_LEDS - bank_2_size );} 
+      else 
+      { d = (bank2 - bank_2_size   );}
+        leds[d] = CRGB::Black; //colour between bank2 and bank 1
+    }  
 }
 
 
 void render(){
-
-for (int i=0;i<99;i++){
-  leds[i] = CRGB::Black;
+  for (int i=0;i<99;i++){
+    leds[i] = CRGB::Black;
   }
-
 }
