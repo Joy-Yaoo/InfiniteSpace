@@ -4,5 +4,3 @@ Infinite Space is a team project in a physical computing course. It is an intera
 This project mainly includes two parts: a 8 * 8 LED cube interactive lighting installation(runs on Arduino Uno) paired with a wearable glove (Runs on Lilypad).
 
 See this page for more details: http://www.jiaqiyao.com/infinity
-
-<img src="http://www.jiaqiyao.com/media/mirrorcover1.gif">
