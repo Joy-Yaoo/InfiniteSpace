@@ -1,6 +1,4 @@
-
  #include <SPI.h>
-
 
 #define XAXIS 0
 #define YAXIS 1
@@ -13,9 +11,7 @@
 #define POS_Y 4
 #define NEG_Y 5
 
-#define BUTTON_PIN 8  // 10 13 pin
-//#define RED_LED 5
-//#define GREEN_LED 7
+#define BUTTON_PIN 8  
 
 #define TOTAL_EFFECTS 8
 #define RAIN 0
@@ -69,19 +65,13 @@ void setup() {
   SPI.beginTransaction(SPISettings(8000000, MSBFIRST, SPI_MODE0));
   Serial.begin(9600);
   pinMode(BUTTON_PIN, INPUT_PULLUP);
- // pinMode(RED_LED, OUTPUT);
- // pinMode(GREEN_LED, OUTPUT);
 
   randomSeed(analogRead(0));
-  //digitalWrite(GREEN_LED, HIGH);
-  
-
 }
 
 void loop() {
 int modeNum;
 
-//check if there is infor on the serial port to read
 if (Serial.available()>0){
 modeNum=Serial.read();
 
@@ -94,16 +84,11 @@ modeNum=Serial.read();
     case 4: planeBoing(); break;
     case 3: woopWoop();  break;
     case 5: glow(); break;
-    
-    
-   
-  
  }
   
  
 renderCube();
-  
-
+ 
 }
 
 void renderCube() {
@@ -116,10 +101,9 @@ void renderCube() {
     digitalWrite(SS, HIGH);
   }
 }
+
 //1
-
 void rain() {
-
   if (loading) {
     clearCube();
     loading = false;
@@ -135,13 +119,12 @@ void rain() {
   }
 }
 
-
 uint8_t planePosition = 0;
 uint8_t planeDirection = 0;
 bool looped = false;
-/////2
-void planeBoing() {
 
+//2
+void planeBoing() {
   if (loading) {
     clearCube();
     uint8_t axis = random(0, 3);
@@ -198,13 +181,14 @@ void planeBoing() {
     }
   }
 }
-////3
+
 uint8_t selX = 0;
 uint8_t selY = 0;
 uint8_t selZ = 0;
 uint8_t sendDirection = 0;
 boolean sending = false;
 
+//3
 void sendVoxels() {
  
   if (loading) {
@@ -217,55 +201,49 @@ void sendVoxels() {
     loading = false;
   }
 
-  //timer++;
-  //if (timer > SEND_VOXELS_TIME) {
-   // timer = 0;
-    if (!sending) {
-      selX = random(0, 8);
-      selZ = random(0, 8);
-      if (getVoxel(selX, 0, selZ)) {
-        selY = 0;
-        sendDirection = POS_Y;
-      } else if (getVoxel(selX, 7, selZ)) {
-        selY = 7;
-        sendDirection = NEG_Y;
+  if (!sending) {
+    selX = random(0, 8);
+    selZ = random(0, 8);
+    if (getVoxel(selX, 0, selZ)) {
+      selY = 0;
+      sendDirection = POS_Y;
+    } else if (getVoxel(selX, 7, selZ)) {
+      selY = 7;
+      sendDirection = NEG_Y;
+    }
+    sending = true;
+  } else {
+    if (sendDirection == POS_Y) {
+      selY++;
+      setVoxel(selX, selY, selZ);
+      clearVoxel(selX, selY - 1, selZ);
+      if (selY == 7) {
+        sending = false;
       }
-      sending = true;
     } else {
-      if (sendDirection == POS_Y) {
-        selY++;
-        setVoxel(selX, selY, selZ);
-        clearVoxel(selX, selY - 1, selZ);
-        if (selY == 7) {
-          sending = false;
-        }
-      } else {
-        selY--;
-        setVoxel(selX, selY, selZ);
-        clearVoxel(selX, selY + 1, selZ);
-        if (selY == 0) {
-          sending = false;
-        }
+      selY--;
+      setVoxel(selX, selY, selZ);
+      clearVoxel(selX, selY + 1, selZ);
+      if (selY == 0) {
+        sending = false;
       }
     }
-  //}
+  }
 }
 
-/////4
 uint8_t cubeSize = 0;
 boolean cubeExpanding = true;
 
+//4
 void woopWoop() {
-
-  
   if (loading) {
     clearCube();
     cubeSize = 2;
     cubeExpanding = true;
     loading = false;
   }
-
   timer++;
+ 
   if (timer > WOOP_WOOP_TIME) {
     timer = 0;
     if (cubeExpanding) {
@@ -283,13 +261,13 @@ void woopWoop() {
     drawCube(4 - cubeSize / 2, 4 - cubeSize / 2, 4 - cubeSize / 2, cubeSize);
   }
 }
-////5
+
 uint8_t xPos;
 uint8_t yPos;
 uint8_t zPos;
 
-void cubeJump() {
- 
+//5
+void cubeJump() { 
   if (loading) {
     clearCube();
     xPos = random(0, 2) * 7;
@@ -338,9 +316,10 @@ void cubeJump() {
   }
 }
 
-///6
 bool glowing;
 uint16_t glowCount = 0;
+
+//6
 void glow() {
 
   if (loading) {
@@ -386,14 +365,12 @@ void glow() {
     }
   }
 }
-////7
 
 uint8_t charCounter = 0;
 uint8_t charPosition = 0;
+
+//7
 void text(char string[], uint8_t len) {
-
-
-
   if (loading) {
     clearCube();
     charPosition = -1;
